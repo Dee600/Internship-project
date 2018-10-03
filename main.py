@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Jun 18 06:39:10 2017
-
-@author: Durgesh Reddiyar
-"""
-
 import cv2
 import numpy as np
 import time
@@ -23,11 +16,13 @@ hero_cascade=cv2.CascadeClassifier('C:\\Users\\Durgesh Reddiyar\\Desktop\\sayali
 #hero_cascade=cv2.CascadeClassifier('C:\\Users\\Durgesh Reddiyar\\Desktop\\sayali\\cascades_part3\\20.xml')
 
 
-
+#Video source 0/1/2
 cap = cv2.VideoCapture(0)
+#initial count of objects counted
 boxer_count=0
 hero_count=0
 
+#input video stream
 while True:
     ret, img = cap.read()
     if ret is True:
@@ -35,7 +30,7 @@ while True:
         boxer = boxer_cascade.detectMultiScale(gray,1.3,5)
         hero = hero_cascade.detectMultiScale(gray,1.3,5)
        
-        
+        #detecting different objects
         for (x,y,w,h) in hero:
             #cls()
             font = cv2.FONT_HERSHEY_SIMPLEX
@@ -87,12 +82,7 @@ cv2.waitKey()
 
 
 
-
-
-
-
-
-
+#confidence of a object
 if(boxer_count>hero_count):
  # messagebox.showinfo("Item Detected", "B104 FOUND!", )
  ctypes.windll.user32.MessageBoxW(0,"BOXER FOUND", "Item Detected",5)
